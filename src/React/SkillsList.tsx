@@ -36,22 +36,29 @@ const CategoryIcons = {
 const SkillsList = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
-  const skills = {
-    "Web Development": [
-      "Single Page Applications (SPAs)",
-      "Landing pages and business websites",
-      "Portfolio websites",
-    ],
-    "Mobile Development": [
-      "Mobile-friendly web apps",
-      "React Native mobile apps",
-    ],
-    "UI/UX Design & Prototyping": [
-      "UI design with Figma & Canva",
-      "UX research & improvements",
-      "Prototyping for websites & mobile apps",
-    ],
-  };
+	const skills = {
+		"Conception & Conseil": [
+			"Analyse des besoins et cadrage produit",
+			"Conception d’architectures robustes (DDD, Clean Architecture)",
+			"Accompagnement stratégique sur les choix techniques",
+		],
+		"Développement Backend": [
+			"Systèmes fiables et évolutifs",
+			"APIs performantes et sécurisées",
+			"Automatisation de processus métiers",
+		],
+		"Applications & Interfaces": [
+			"Applications métiers sur mesure",
+			"Tableaux de bord et outils internes",
+			"Modernisation et migration d’applications existantes",
+		],
+		"Innovation & IA": [
+			"Intégration LLM (LangChain, RAG)",
+			"Expérimentation de nouvelles technologies",
+			"Conseil sur l’usage de l’IA dans vos outils",
+		],
+	};
+
 
   const toggleItem = (item: string) => {
     setOpenItem(openItem === item ? null : item);
@@ -60,7 +67,7 @@ const SkillsList = () => {
   return (
     <div className="text-left pt-3 md:pt-9">
       <h3 className="text-[var(--white)] text-3xl md:text-4xl font-semibold md:mb-6">
-        What I do?
+        Ce que je propose
       </h3>
       <ul className="space-y-4 mt-4 text-lg">
         {Object.entries(skills).map(([category, items]) => (
