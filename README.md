@@ -49,8 +49,6 @@ src/
 ├── layouts/
 |    └── Layout.astro
 ├── React/
-|    ├── LetterGlitch.tsx
-|    ├── LikeButton.tsx
 |    └── SkillsList.tsx
 └── pages/
      └── index.astro

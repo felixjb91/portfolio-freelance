@@ -59,9 +59,16 @@ export default function TimelineItem({
 							transition={{ duration: 0.5, delay: index * 0.2 + 0.1 }}
 							viewport={{ once: true, margin: "-50px" }}
 					>
-						<h3 className="font-medium text-white">{title}</h3>
-						<p className="text-sm text-muted-foreground text-white">{subtitle}</p>
-						<p className="text-xs text-muted-foreground/70 mb-2 text-white">{date}</p>
+						<h3 className="font-medium">{title}</h3>
+						<div className="flex flex-row gap-1">
+							<img src={"/svg/map-pin.svg"} alt="map-pin" className="w-5 h-5 opacity-70 shiny-sec"/>
+							<p className="text-sm text-muted-foreground text-gray-300">{subtitle}</p>
+						</div>
+						<div className="flex flex-row gap-1">
+							<img src={"/svg/calendar.svg"} alt="calendar" className="w-5 h-5 opacity-70 shiny-sec"/>
+							<p className="text-xs text-muted-foreground/70 mb-2 text-gray-300=">{date}</p>
+						</div>
+
 					</motion.div>
 					<motion.div
 							initial={{ opacity: 0 }}
