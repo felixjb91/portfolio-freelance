@@ -1,9 +1,22 @@
 import TimelineItem from "./TimelineItem";
-import { Briefcase } from "lucide-react";
+import { Briefcase, Code, TrendingUp, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import {workExperiencePerso, workExperiencePro} from "@/lib/data-text.ts";
 
 export default function ExperienceSection() {
+
+	function getCategoryIcon(category: string) {
+		switch (category) {
+			case "tech":
+				return { icon: Code, color: "text-purple-400" };
+			case "impact":
+				return { icon: TrendingUp, color: "text-blue-400" };
+			case "humain":
+				return { icon: Users, color: "text-orange-400" };
+			default:
+				return { icon: Briefcase, color: "text-gray-400" };
+		}
+	}
 
 	function workExperiences(workExperience: any[]) {
 		return <>
@@ -30,18 +43,22 @@ export default function ExperienceSection() {
 							<h4 className="text-sm font-medium text-gray-300">Contexte</h4>
 						</div>
 						<ul className="list-none ml-4 space-y-2 text-sm">
-							{job.achievements.map((achievement, i) => (
+							{job.achievements.map((achievement, i) => {
+								const { icon: Icon, color } = getCategoryIcon(achievement.category);
+								return (
 									<motion.li
 											key={i}
-											className="text-gray-400 text-muted-foreground relative pl-6"
+											className="text-gray-400 text-muted-foreground relative pl-6 flex items-center"
 											initial={{opacity: 0, x: -10}}
 											whileInView={{opacity: 1, x: 0}}
 											transition={{duration: 0.3, delay: 0.1 * i}}
 											viewport={{once: true}}
 									>
-										{achievement}
+										<Icon className={`h-4 w-4 ${color} inline-block mr-2 flex-shrink-0`} />
+										<span>{achievement.text}</span>
 									</motion.li>
-							))}
+								);
+							})}
 						</ul>
 					</motion.div>
 				</TimelineItem>
