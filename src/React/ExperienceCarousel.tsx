@@ -21,12 +21,15 @@ interface ExperienceCarouselProps {
 
 export default function ExperienceCarousel({ experiences }: ExperienceCarouselProps) {
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [cardWidth, setCardWidth] = useState(88);
+	const [cardWidth, setCardWidth] = useState(100);
+	const [isMobile, setIsMobile] = useState(true);
 	const dragX = useMotionValue(0);
 
 	useEffect(() => {
 		const updateWidth = () => {
-			setCardWidth(window.innerWidth < 768 ? 95 : window.innerWidth < 1024 ? 75 : 68);
+			const mobile = window.innerWidth < 768;
+			setIsMobile(mobile);
+			setCardWidth(mobile ? 100 : window.innerWidth < 1024 ? 75 : 68);
 		};
 		updateWidth();
 		window.addEventListener("resize", updateWidth);
@@ -69,10 +72,10 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
 
 	return (
 		<div className="relative w-full py-8">
-			{/* Carousel container with overflow visible for peek effect */}
-			<div className="overflow-hidden px-2 md:px-4">
+			{/* Carousel container */}
+			<div className={`overflow-hidden ${isMobile ? 'px-4' : 'px-4'}`}>
 				<motion.div
-					className="flex gap-3 md:gap-4 cursor-grab active:cursor-grabbing"
+					className="flex gap-4 cursor-grab active:cursor-grabbing"
 					drag="x"
 					dragConstraints={{ left: 0, right: 0 }}
 					dragElastic={0.2}
@@ -90,11 +93,11 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
 					{experiences.map((exp, index) => (
 						<motion.div
 							key={index}
-							className="min-w-[92%] md:min-w-[70%] lg:min-w-[65%] flex-shrink-0"
+							className={isMobile ? "min-w-full flex-shrink-0" : "min-w-[70%] lg:min-w-[65%] flex-shrink-0"}
 							initial={{ opacity: 0, scale: 0.95 }}
 							animate={{
-								opacity: index === currentIndex ? 1 : 0.5,
-								scale: index === currentIndex ? 1 : 0.95,
+								opacity: isMobile ? 1 : (index === currentIndex ? 1 : 0.5),
+								scale: isMobile ? 1 : (index === currentIndex ? 1 : 0.95),
 							}}
 							transition={{ duration: 0.3 }}
 						>
@@ -137,25 +140,33 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
 				</motion.div>
 			</div>
 
-			{/* Navigation arrows - visible on all devices */}
-			{currentIndex > 0 && (
+			{/* Navigation arrows - desktop only */}
+			{!isMobile && currentIndex > 0 && (
 				<button
 					onClick={prev}
-					className="absolute left-0 md:left-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-purple-500/30 hover:bg-purple-500/50 active:bg-purple-500/60 backdrop-blur-sm border border-purple-500/40 transition-all"
+					className="absolute left-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/30 hover:bg-purple-500/50 backdrop-blur-sm border border-purple-500/40 transition-all"
 					aria-label="Previous experience"
 				>
-					<ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+					<ChevronLeft className="w-6 h-6 text-white" />
 				</button>
 			)}
 
-			{currentIndex < experiences.length - 1 && (
+			{!isMobile && currentIndex < experiences.length - 1 && (
 				<button
 					onClick={next}
-					className="absolute right-0 md:right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-purple-500/30 hover:bg-purple-500/50 active:bg-purple-500/60 backdrop-blur-sm border border-purple-500/40 transition-all"
+					className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/30 hover:bg-purple-500/50 backdrop-blur-sm border border-purple-500/40 transition-all"
 					aria-label="Next experience"
 				>
-					<ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+					<ChevronRight className="w-6 h-6 text-white" />
 				</button>
+			)}
+
+			{/* Swipe indicator - mobile only */}
+			{isMobile && currentIndex < experiences.length - 1 && (
+				<div className="flex items-center justify-center gap-2 mt-4 text-gray-400 text-sm animate-pulse">
+					<span>Swipez pour voir plus</span>
+					<ChevronRight className="w-4 h-4" />
+				</div>
 			)}
 
 			{/* Pagination dots */}
