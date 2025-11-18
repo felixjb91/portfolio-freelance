@@ -16,7 +16,7 @@ export const skills = {
 	],
 	"Innovation & IA": [
 		"Intégration LLM (LangChain, RAG)",
-		"Expérimentation de nouvelles technologies",
+		"Automatisation de processus",
 		"Conseil sur l’usage de l’IA dans vos outils",
 	],
 };
@@ -28,9 +28,9 @@ export const workExperiencePro = [
 		position: "Ingénieur Logiciel – Lead dev",
 		period: "Oct. 2023 – Aujourd'hui",
 		achievements: [
-			{ category: "tech", text: "Architecture backend modulaire et robuste (DDD)" },
+			{ category: "tech", text: "Architecture backend modulaire et robuste sur le coud" },
 			{ category: "tech", text: "Mise en place TDD, Clean Code et Observabilité" },
-			{ category: "impact", text: "Modernisation d'applications critiques de gestion des œuvres" },
+			{ category: "impact", text: "Modernisation d'applications critiques d'ingestion des œuvres" },
 			{ category: "impact", text: "Optimisation performances sur fortes volumétries" },
 			{ category: "humain", text: "Lead technique et accompagnement des développeurs" },
 			{ category: "humain", text: "Collaboration avec métiers pour cadrer les évolutions" },
@@ -68,14 +68,14 @@ export const workExperiencePerso = [
 		position: "",
 		period: "Avr. 2025 – Aujourd'hui",
 		achievements: [
-			{ category: "tech", text: "Application mobile de suivi d'entraînement sportif" },
-			{ category: "tech", text: "Enregistrement des entrainements par la voix avec agent IA" },
+			{ category: "tech", text: "Pilotage de l'application par la voix, interprété par l'IA" },
+			{ category: "impact", text: "Application mobile de suivi d'entraînement sportif" },
 			{ category: "impact", text: "Expérience, simple, fluide,  minimaliste adaptée à la salle de sport" },
 			{ category: "impact", text: "Statistiques complètes par exercices et groupe musculaires" },
 		],
 	},
 	{
-		company: "NosDéputés ont du Talent | nosdeputes-talent.fr",
+		company: "NosDéputés ont du Talent | https://nosdeputes-talent.fr",
 		location: "Paris / Remote",
 		position: "",
 		period: "Sep. 2024 – Avr. 2025",
