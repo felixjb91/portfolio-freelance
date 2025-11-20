@@ -1,3 +1,31 @@
+export const Tech = {
+	ANGULAR: "angular",
+	ASTRO: "astro",
+	AWS: "aws",
+	BASH: "bash",
+	CSS3: "CSS3",
+	DOCKER: "docker",
+	GIT: "git",
+	HTML5: "HTML5",
+	JAVA: "java",
+	JAVASCRIPT: "javaScript",
+	LANGCHAIN4J: "langchain4j",
+	MYSQL: "mysql",
+	N8N: "n8n",
+	NEXT: "next",
+	NODEJS: "nodejs",
+	POSTGRESQL: "postgresql",
+	REACT: "react",
+	SPRING_BOOT: "spring-boot",
+	SUPABASE: "supabase",
+	TAILWINDCSS: "tailwindcss",
+	TYPESCRIPT: "typeScript",
+	VERCEL: "vercel",
+	VUE: "vue",
+} as const;
+
+export type TechType = typeof Tech[keyof typeof Tech];
+
 export const skills = {
 	"Conception & Conseil": [
 		"Analyse des besoins et cadrage produit",
@@ -27,6 +55,7 @@ export const workExperiencePro = [
 		location: "Paris, France",
 		position: "Ingénieur Logiciel – Lead dev",
 		period: "Oct. 2023 – Aujourd'hui",
+		techStack: [Tech.JAVA, Tech.SPRING_BOOT, Tech.AWS, Tech.DOCKER, Tech.POSTGRESQL],
 		achievements: [
 			{ category: "tech", text: "Architecture backend modulaire et robuste sur le coud" },
 			{ category: "tech", text: "Mise en place TDD, Clean Code et Observabilité" },
@@ -41,6 +70,7 @@ export const workExperiencePro = [
 		location: "Paris, France",
 		position: "Ingénieur Études & Développement",
 		period: "Juil. 2019 – Oct. 2023",
+		techStack: [Tech.JAVA, Tech.SPRING_BOOT, Tech.DOCKER, Tech.POSTGRESQL],
 		achievements: [
 			{ category: "tech", text: "Développement backend avec tests et clean code" },
 			{ category: "impact", text: "Contribution à des solutions scalables et fiables" },
@@ -53,6 +83,7 @@ export const workExperiencePro = [
 		location: "Paris, France",
 		position: "Développeur Logiciel (Salesforce)",
 		period: "Oct. 2018 – Août 2019",
+		techStack: [Tech.JAVASCRIPT],
 		achievements: [
 			{ category: "tech", text: "Conception et intégration de workflows Salesforce" },
 			{ category: "impact", text: "Automatisation de processus internes" },
@@ -67,6 +98,7 @@ export const workExperiencePerso = [
 		location: "Paris / Remote",
 		position: "",
 		period: "Avr. 2025 – Aujourd'hui",
+		techStack: [Tech.REACT, Tech.TYPESCRIPT, Tech.SUPABASE],
 		achievements: [
 			{ category: "tech", text: "Pilotage de l'application par la voix, interprété par l'IA" },
 			{ category: "impact", text: "Application mobile de suivi d'entraînement sportif" },
@@ -79,6 +111,7 @@ export const workExperiencePerso = [
 		location: "Paris / Remote",
 		position: "",
 		period: "Sep. 2024 – Avr. 2025",
+		techStack: [Tech.NEXT, Tech.TYPESCRIPT, Tech.LANGCHAIN4J, Tech.POSTGRESQL, Tech.VERCEL],
 		achievements: [
 			{ category: "tech", text: "Synthèses de propositions et résumés de débats par IA" },
 			{ category: "tech", text: "Chatbot RAG avec réponses sourcées et vérifiables" },
@@ -91,6 +124,7 @@ export const workExperiencePerso = [
 		location: "Paris / Remote",
 		position: "",
 		period: "Jan. 2024 – Juin 2024",
+		techStack: [Tech.NEXT, Tech.TYPESCRIPT, Tech.SUPABASE, Tech.VERCEL],
 		achievements: [
 			{ category: "tech", text: "Digitalisation d'un jeu de société avec gestion des parties" },
 			{ category: "tech", text: "Missions dynamiques générées par IA" },
