@@ -159,8 +159,8 @@ const navItems: NavItem[] = [
       rootMargin: "-20% 0px -20% 0px"
     };
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
+    const observerCallback = (entries: any) => {
+      entries.forEach((entry: any) => {
         if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
           navLinks.forEach((link) => link.classList.remove("active"));
           const id = entry.target.getAttribute("id");
