@@ -24,7 +24,6 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
 
 	useEffect(() => {
 		const updateIsMobile = () => {
-            console.log(window.innerWidth);
 			setIsMobile(window.innerWidth < 768);
 		};
 		updateIsMobile();
