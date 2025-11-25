@@ -1,0 +1,14 @@
+# Règles pour tous les robots d'indexation
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://feltech.fr/sitemap-index.xml
+
+# Bloquer les ressources internes inutiles à l'indexation
+User-agent: *
+Disallow: /_astro/
+Disallow: /api/
+
+# Temps d'attente entre les requêtes (optionnel, en secondes)
+Crawl-delay: 1

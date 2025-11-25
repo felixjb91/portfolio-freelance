@@ -7,18 +7,109 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fr-FR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Développeur Logiciel" />
+    <meta name="description" content="Développeur logiciel backend à Paris, spécialisé en architecture de systèmes fiables et évolutifs. Expert en conception logicielle, TDD et Clean Code. Polyvalent et adaptable à vos besoins techniques." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Développeur logiciel, architecte logiciel, développement backend, architecture logicielle, conception logicielle, systèmes critiques, DDD, Domain-driven design, TDD, Test driven development, clean code, freelance Développeur paris, développeur polyvalent, java, spring boot, APIs REST, microservices, cloud, java, spring-boot, n8n, IA, AI" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta property="og:title" content="Félix Jean-Baptiste" />
-    <meta property="og:description" content="Développeur Logiciel" />
-    <meta property="og:image" content="https://oscarhernandez.vercel.app/og.image.png" />
-    <meta property="og:url" content="https://oscarhernandez.vercel.app" />
+    <link rel="canonical" href="https://feltech.fr/" />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://feltech.fr/" />
+    <meta property="og:title" content="Félix Jean-Baptiste - Développeur Logiciel Backend | Architecture & Systèmes Fiables" />
+    <meta property="og:description" content="Développeur logiciel spécialisé en architecture backend robuste et systèmes évolutifs. Conception, développement et conseil technique sur mesure pour vos projets critiques." />
+    <meta property="og:image" content="https://feltech.fr/og.image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Félix Jean-Baptiste - Développeur Logiciel Backend" />
     <meta property="og:site_name" content="Félix Jean-Baptiste Portfolio" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://feltech.fr/" />
+    <meta name="twitter:title" content="Félix Jean-Baptiste - Développeur Logiciel Backend" />
+    <meta name="twitter:description" content="Développeur logiciel spécialisé en architecture backend et systèmes fiables. Conception sur mesure, TDD, Clean Code. Polyvalent et adaptable à vos besoins techniques." />
+    <meta name="twitter:image" content="https://feltech.fr/og.image.png" />
+
+    <!-- Schema.org JSON-LD pour Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Félix Jean-Baptiste",
+        "jobTitle": "Développeur Logiciel Backend",
+        "description": "Développeur logiciel spécialisé en architecture de systèmes backend robustes et évolutifs. Expert en conception logicielle, méthodologies agiles et développement de solutions sur mesure.",
+        "url": "https://feltech.fr",
+        "image": "https://feltech.fr/og.image.png",
+        "email": "felixjb91@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Paris",
+          "addressCountry": "FR"
+        },
+        "sameAs": [
+          "https://github.com/felixjb91",
+          "https://linkedin.com/in/felix-jean-baptiste-dev"
+        ],
+        "knowsAbout": [
+          "Ingénierie logicielle",
+          "Architecture logicielle",
+          "Conception de systèmes",
+          "Développement Backend",
+          "Test-Driven Development",
+          "Clean Code",
+          "Domain-Driven Design",
+          "Microservices",
+          "APIs REST",
+          "Systèmes distribués",
+          "Java",
+          "Spring Boot",
+          "PostgreSQL",
+          "AWS",
+          "Docker",
+          "Cloud",
+          "React Native"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Formation en ingénierie logicielle"
+        }
+      }
+    </script>
+
+    <!-- Schema.org JSON-LD pour ProfessionalService -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Félix Jean-Baptiste - Ingénierie & Développement Logiciel",
+        "description": "Services d'ingénierie logicielle, architecture backend et conseil technique. Conception et développement de systèmes robustes, évolutifs et adaptés à vos besoins spécifiques.",
+        "provider": {
+          "@type": "Person",
+          "name": "Félix Jean-Baptiste"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "France"
+        },
+        "serviceType": [
+          "Ingénierie Logicielle",
+          "Architecture Backend",
+          "Conception de Systèmes",
+          "Développement Sur Mesure",
+          "Conseil Technique",
+          "Refactoring & Modernisation",
+          "APIs & Microservices",
+          "Audit de Code"
+        ],
+        "priceRange": "$$",
+        "url": "https://feltech.fr"
+      }
+    </script>
 
     <title>{title}</title>
   </head>
@@ -29,6 +120,13 @@ const { title } = Astro.props;
 
 <style is:global>
   @import url('https://fonts.cdnfonts.com/css/montserrat');
+
+  /* Optimisation du chargement de la font */
+  @supports (font-display: swap) {
+    * {
+      font-display: swap;
+    }
+  }
 
   :root {
     --background: #1e1e1e;

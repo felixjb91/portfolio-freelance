@@ -6,7 +6,7 @@ const CategoryIcons = {
   "Conception & Conseil": (
 	<img
 		src={"/svg/edit-tools.svg"}
-		alt="edit-tools"
+		alt="Icône conception et conseil en architecture logicielle"
 		className={classIcon}
 		width="30"
 		height="30"
@@ -16,7 +16,7 @@ const CategoryIcons = {
   "Développement Backend": (
 	  <img
 		  src={"/svg/backend-coding.svg"}
-		  alt="programming-code-svgrepo-com"
+		  alt="Icône développement backend et programmation"
 		  className={classIcon}
 		  width="30"
 		  height="30"
@@ -26,7 +26,7 @@ const CategoryIcons = {
   "Applications & Interfaces": (
 	  <img
 		  src={"/svg/user-interface.svg"}
-		  alt="tableau-de-bord"
+		  alt="Icône applications web et interfaces utilisateur"
 		  className={classIcon}
 		  width="30"
 		  height="30"
@@ -36,7 +36,7 @@ const CategoryIcons = {
   "Innovation & IA": (
 	  <img
 		  src={"/svg/idea.svg"}
-		  alt="idea-svgrepo-com"
+		  alt="Icône innovation et intelligence artificielle"
 		  className={classIcon}
 		  width="50"
 		  height="50"
@@ -79,6 +79,7 @@ const SkillsList = () => {
                     className={`w-6 h-6 text-[var(--white)] transform transition-transform flex-shrink-0 ${
                       openItem === category ? "rotate-180" : ""
                     }`}
+                    aria-hidden="true"
                   >
                     <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
                   </svg>
