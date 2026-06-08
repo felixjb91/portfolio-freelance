@@ -1,4 +1,10 @@
 ---
+import "@fontsource-variable/lora";
+import "@fontsource-variable/inter";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/700.css";
+
 interface Props {
   title: string;
 }
@@ -9,40 +15,75 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="fr-FR">
   <head>
+    <!-- Anti-flash : applique le thème avant le premier paint (clair par défaut) -->
+    <script is:inline>
+      (function () {
+        try {
+          if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <meta charset="UTF-8" />
-    <meta name="description" content="Développeur logiciel backend à Paris, spécialisé en architecture de systèmes fiables et évolutifs. Expert en conception logicielle, TDD et Clean Code. Polyvalent et adaptable à vos besoins techniques." />
+    <meta
+      name="description"
+      content="Ingénieur logiciel backend freelance à Paris (~7 ans d'expérience). Je conçois des systèmes fiables et évolutifs en Java / Spring Boot, et j'y intègre l'IA (LLM, RAG, agents) avec la même exigence d'ingénierie : TDD, Clean Architecture, DDD."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="Développeur logiciel, architecte logiciel, développement backend, architecture logicielle, conception logicielle, systèmes critiques, DDD, Domain-driven design, TDD, Test driven development, clean code, freelance Développeur paris, développeur polyvalent, java, spring boot, APIs REST, microservices, cloud, java, spring-boot, n8n, IA, AI" />
+    <meta name="author" content="Félix Jean-Baptiste" />
+    <meta name="theme-color" content="#FBFAF7" />
+    <meta
+      name="keywords"
+      content="ingénieur logiciel backend, développeur backend freelance, architecte logiciel, Java, Spring Boot, AI engineer, intégration IA, LLM, RAG, agents IA, LangChain4J, TDD, Clean Architecture, DDD, Domain-driven design, systèmes fiables, scalabilité, microservices, APIs REST, PostgreSQL, AWS, Docker, freelance Paris"
+    />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="canonical" href="https://feltech.fr/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://feltech.fr/" />
-    <meta property="og:title" content="Félix Jean-Baptiste - Développeur Logiciel Backend | Architecture & Systèmes Fiables" />
-    <meta property="og:description" content="Développeur logiciel spécialisé en architecture backend robuste et systèmes évolutifs. Conception, développement et conseil technique sur mesure pour vos projets critiques." />
+    <meta
+      property="og:title"
+      content="Félix Jean-Baptiste — Ingénieur logiciel backend & IA | Systèmes fiables, LLM & RAG"
+    />
+    <meta
+      property="og:description"
+      content="Ingénieur logiciel backend senior. Je conçois des systèmes fiables et évolutifs (Java, Spring Boot) et j'y intègre l'IA — agents, LLM et RAG — avec la même exigence d'ingénierie."
+    />
     <meta property="og:image" content="https://feltech.fr/og.image.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Félix Jean-Baptiste - Développeur Logiciel Backend" />
-    <meta property="og:site_name" content="Félix Jean-Baptiste Portfolio" />
+    <meta
+      property="og:image:alt"
+      content="Félix Jean-Baptiste — Ingénieur logiciel backend & IA"
+    />
+    <meta property="og:site_name" content="Félix Jean-Baptiste" />
     <meta property="og:locale" content="fr_FR" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://feltech.fr/" />
-    <meta name="twitter:title" content="Félix Jean-Baptiste - Développeur Logiciel Backend" />
-    <meta name="twitter:description" content="Développeur logiciel spécialisé en architecture backend et systèmes fiables. Conception sur mesure, TDD, Clean Code. Polyvalent et adaptable à vos besoins techniques." />
+    <meta
+      name="twitter:title"
+      content="Félix Jean-Baptiste — Ingénieur logiciel backend & IA"
+    />
+    <meta
+      name="twitter:description"
+      content="Je conçois des systèmes backend fiables et évolutifs (Java, Spring Boot) et j'y intègre l'IA — agents, LLM et RAG — avec la même exigence d'ingénierie."
+    />
     <meta name="twitter:image" content="https://feltech.fr/og.image.png" />
 
     <!-- Schema.org JSON-LD pour Person -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Félix Jean-Baptiste",
-        "jobTitle": "Développeur Logiciel Backend",
-        "description": "Développeur logiciel spécialisé en architecture de systèmes backend robustes et évolutifs. Expert en conception logicielle, méthodologies agiles et développement de solutions sur mesure.",
+        "jobTitle": "Ingénieur logiciel backend & IA",
+        "description": "Ingénieur logiciel backend freelance spécialisé en conception de systèmes fiables et évolutifs (Java, Spring Boot) et en intégration d'IA — agents, LLM et RAG. Exigence d'ingénierie : TDD, Clean Architecture, DDD.",
         "url": "https://feltech.fr",
         "image": "https://feltech.fr/og.image.png",
         "email": "felixjb91@gmail.com",
@@ -62,6 +103,7 @@ const { title } = Astro.props;
           "Développement Backend",
           "Test-Driven Development",
           "Clean Code",
+          "Clean Architecture",
           "Domain-Driven Design",
           "Microservices",
           "APIs REST",
@@ -72,7 +114,11 @@ const { title } = Astro.props;
           "AWS",
           "Docker",
           "Cloud",
-          "React Native"
+          "Intelligence artificielle",
+          "LLM",
+          "RAG",
+          "Agents IA",
+          "LangChain4J"
         ],
         "alumniOf": {
           "@type": "EducationalOrganization",
@@ -82,12 +128,12 @@ const { title } = Astro.props;
     </script>
 
     <!-- Schema.org JSON-LD pour ProfessionalService -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
-        "name": "Félix Jean-Baptiste - Ingénierie & Développement Logiciel",
-        "description": "Services d'ingénierie logicielle, architecture backend et conseil technique. Conception et développement de systèmes robustes, évolutifs et adaptés à vos besoins spécifiques.",
+        "name": "Félix Jean-Baptiste - Ingénierie logicielle & IA",
+        "description": "Services d'ingénierie logicielle, architecture backend, intégration d'IA (agents, LLM, RAG) et conseil technique. Conception et développement de systèmes robustes, évolutifs et adaptés à vos besoins.",
         "provider": {
           "@type": "Person",
           "name": "Félix Jean-Baptiste"
@@ -101,10 +147,12 @@ const { title } = Astro.props;
           "Architecture Backend",
           "Conception de Systèmes",
           "Développement Sur Mesure",
+          "Intégration IA & LLM",
+          "Développement d'agents IA",
+          "Systèmes RAG",
           "Conseil Technique",
           "Refactoring & Modernisation",
-          "APIs & Microservices",
-          "Audit de Code"
+          "APIs & Microservices"
         ],
         "priceRange": "$$",
         "url": "https://feltech.fr"
@@ -113,69 +161,110 @@ const { title } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <body class="bg-[--background] sm:px-28 lg:px-20 px-9">
+  <body class="bg-bg font-sans text-ink antialiased">
     <slot />
   </body>
 </html>
 
 <style is:global>
-  @import url('https://fonts.cdnfonts.com/css/montserrat');
+  :root {
+    /* Thème clair (par défaut, prioritaire) */
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --text: #1a1a18;
+    --muted: #6b6862;
+    --accent: #2742c9;
+    --border: #e6e3dc;
 
-  /* Optimisation du chargement de la font */
-  @supports (font-display: swap) {
-    * {
-      font-display: swap;
-    }
+    /* Aliases de compatibilité (anciens composants) */
+    --background: var(--bg);
+    --background-card: var(--surface);
+    --component-bg: var(--surface);
+    --sec: var(--accent);
+    --white: var(--text);
+    --white-icon: var(--muted);
+    --white-icon-tr: var(--border);
+
+    color-scheme: light;
   }
 
-  :root {
-    --background: #1e1e1e;
-    --background-card: #262626;
-    --sec: #a476ff;
-    --white: #dfdfdf;
-    --white-icon: #f3f3f398;
-    --white-icon-tr: rgba(140, 140, 140, 0.13);
+  [data-theme="dark"] {
+    --bg: #111110;
+    --surface: #191917;
+    --text: #eceae3;
+    --muted: #9a968c;
+    --accent: #8aa0ff;
+    --border: #2a2a26;
+
+    color-scheme: dark;
   }
 
   * {
-    font-family:
-      "Montserrat",
-      -apple-system,
-      system-ui,
-      sans-serif;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-display: swap;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Inter Variable", Inter, system-ui, sans-serif;
+    min-height: 100vh;
   }
 
   *::selection {
-    background-color: var(--sec);
-    color: var(--background);
+    background-color: var(--accent);
+    color: var(--bg);
   }
 
-  /* Scrollbar styles */
+  /* Crossfade des couleurs au changement de thème */
+  @media (prefers-reduced-motion: no-preference) {
+    *,
+    *::before,
+    *::after {
+      transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+    }
+  }
 
+  /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 15px;
+    width: 12px;
   }
-
   ::-webkit-scrollbar-track {
-    background: var(--container);
-    border-radius: 30px;
+    background: var(--bg);
   }
-
   ::-webkit-scrollbar-thumb {
-    background: var(--background);
+    background: var(--border);
     border-radius: 10px;
+    border: 3px solid var(--bg);
   }
-
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--pink);
+    background: var(--muted);
   }
-
-  /* Scrollbar styles for Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--line) var(--container);
+    scrollbar-color: var(--border) var(--bg);
+  }
+
+  /* Masque la scrollbar des carrousels (complément WebKit) */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Accessibilité : réduit les animations à la demande */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>

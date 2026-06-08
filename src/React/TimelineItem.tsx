@@ -1,7 +1,6 @@
 import * as React from "react";
-import { twMerge } from "tailwind-merge";
-import { clsx } from "clsx";
 import { motion } from "framer-motion";
+import { MapPin, Calendar } from "lucide-react";
 
 interface TimelineItemProps {
 	title: string;
@@ -30,7 +29,7 @@ export default function TimelineItem({
 			>
 				<div className="flex flex-col items-center">
 					<motion.div
-							className="flex h-[18px] w-[18px] rounded-full border border-purple-500/50 bg-background dark:bg-muted z-10"
+							className="flex h-[14px] w-[14px] rounded-full border border-[var(--accent)] bg-[var(--surface)] z-10"
 							initial={{ scale: 0 }}
 							whileInView={{ scale: 1 }}
 							transition={{
@@ -43,7 +42,7 @@ export default function TimelineItem({
 					/>
 					{!isLast && (
 							<motion.div
-									className="w-px grow bg-gradient-to-b from-purple-500/50 to-pink-500/30 dark:from-purple-500/30 dark:to-pink-500/10"
+									className="w-px grow bg-[var(--border)]"
 									initial={{ height: 0 }}
 									whileInView={{ height: "100%" }}
 									transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
@@ -51,24 +50,23 @@ export default function TimelineItem({
 							/>
 					)}
 				</div>
-				<div className={twMerge(clsx("pb-8", isLast ? "pb-0" : ""))}>
+				<div className={isLast ? "pb-0" : "pb-8"}>
 					<motion.div
-							className="flex flex-col gap-0.5"
+							className="flex flex-col gap-1"
 							initial={{ opacity: 0, x: -20 }}
 							whileInView={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.5, delay: index * 0.2 + 0.1 }}
 							viewport={{ once: true, margin: "-50px" }}
 					>
-						<h3 className="font-medium">{title}</h3>
-						<div className="flex flex-row gap-1">
-							<img src={"/svg/map-pin.svg"} alt="map-pin" className="w-5 h-5 opacity-70 shiny-sec"/>
-							<p className="text-sm text-muted-foreground text-gray-300">{subtitle}</p>
+						<h3 className="font-serif text-lg text-[var(--text)]">{title}</h3>
+						<div className="flex flex-row items-center gap-1.5 text-sm text-[var(--muted)]">
+							<MapPin className="w-4 h-4 text-[var(--accent)]" aria-hidden="true" />
+							<span>{subtitle}</span>
 						</div>
-						<div className="flex flex-row gap-1">
-							<img src={"/svg/calendar.svg"} alt="calendar" className="w-5 h-5 opacity-70 shiny-sec"/>
-							<p className="text-xs text-muted-foreground/70 mb-2 text-gray-300=">{date}</p>
+						<div className="flex flex-row items-center gap-1.5 font-mono text-xs text-[var(--muted)]">
+							<Calendar className="w-4 h-4 text-[var(--accent)]" aria-hidden="true" />
+							<span>{date}</span>
 						</div>
-
 					</motion.div>
 					<motion.div
 							initial={{ opacity: 0 }}

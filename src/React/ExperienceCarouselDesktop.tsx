@@ -37,13 +37,13 @@ export default function ExperienceCarouselDesktop({ experiences }: ExperienceCar
 	const getCategoryIcon = (category: string) => {
 		switch (category) {
 			case "tech":
-				return { icon: Code, color: "text-purple-400" };
+				return Code;
 			case "impact":
-				return { icon: TrendingUp, color: "text-blue-400" };
+				return TrendingUp;
 			case "humain":
-				return { icon: Users, color: "text-orange-400" };
+				return Users;
 			default:
-				return { icon: Code, color: "text-gray-400" };
+				return Code;
 		}
 	};
 
@@ -69,11 +69,11 @@ export default function ExperienceCarouselDesktop({ experiences }: ExperienceCar
 	};
 
 	return (
-		<div className="relative w-full py-8">
+		<div className="relative w-full py-6">
 			{/* Carousel container */}
-			<div className="overflow-hidden px-4">
+			<div className="overflow-hidden px-1">
 				<motion.div
-					className="flex gap-4 cursor-grab active:cursor-grabbing"
+					className="flex gap-5 cursor-grab active:cursor-grabbing"
 					drag="x"
 					dragConstraints={{ left: 0, right: 0 }}
 					dragElastic={0.2}
@@ -92,61 +92,58 @@ export default function ExperienceCarouselDesktop({ experiences }: ExperienceCar
 						<motion.div
 							key={index}
 							className="min-w-[70%] lg:min-w-[65%] flex-shrink-0"
-							initial={{ opacity: 0, scale: 0.95 }}
+							initial={{ opacity: 0 }}
 							animate={{
-								opacity: index === currentIndex ? 1 : 0.5,
-								scale: index === currentIndex ? 1 : 0.95,
+								opacity: index === currentIndex ? 1 : 0.4,
 							}}
 							transition={{ duration: 0.3 }}
 						>
-							<div className="p-6 bg-background/80 backdrop-blur-sm rounded-lg border border-purple-500/20 shadow-lg h-full">
+							<div className="p-7 bg-[var(--surface)] border border-[var(--border)] rounded-xl h-full">
 								{/* Card header */}
-								<h3 className="font-medium text-xl text-white break-words">
-									{exp.position ? `${exp.position} | ${exp.company}` : exp.company}
+								<h3 className="font-serif text-xl md:text-2xl text-[var(--text)] break-words">
+									{exp.position ? `${exp.position} · ${exp.company}` : exp.company}
 								</h3>
 
-								<div className="flex items-center gap-2 text-sm text-gray-300 mt-3">
-									<MapPin className="w-4 h-4 opacity-70 text-[var(--sec)] flex-shrink-0" />
-									<span className="break-words">{exp.location}</span>
-								</div>
-
-								<div className="flex items-center gap-2 text-xs text-gray-300 mt-1 mb-4">
-									<Calendar className="w-4 h-4 opacity-70 text-[var(--sec)] flex-shrink-0" />
-									<span className="break-words">{exp.period}</span>
+								<div className="flex flex-wrap items-center gap-x-5 gap-y-1 mt-3 font-mono text-xs text-[var(--muted)]">
+									<span className="flex items-center gap-1.5">
+										<MapPin className="w-3.5 h-3.5 text-[var(--accent)] flex-shrink-0" />
+										<span className="break-words">{exp.location}</span>
+									</span>
+									<span className="flex items-center gap-1.5">
+										<Calendar className="w-3.5 h-3.5 text-[var(--accent)] flex-shrink-0" />
+										<span className="break-words">{exp.period}</span>
+									</span>
 								</div>
 
 								{/* Tech Stack */}
 								{exp.techStack && exp.techStack.length > 0 && (
-									<div className="flex flex-wrap gap-2 mb-4">
+									<div className="flex flex-wrap gap-2 mt-5">
 										{exp.techStack.map((tech, i) => (
-											<img
+											<span
 												key={i}
-												src={`/svg/${tech}.svg`}
-												alt={tech}
-												className="w-5 h-5 opacity-70 hover:opacity-100 transition-opacity"
-												title={tech}
-											/>
+												className="font-mono text-[0.7rem] uppercase tracking-wide px-2 py-1 border border-[var(--border)] text-[var(--muted)] rounded"
+											>
+												{tech}
+											</span>
 										))}
 									</div>
 								)}
 
 								{/* Achievements */}
-								<div className="mt-4 p-4 bg-background/40 rounded-lg border border-purple-500/10">
-									<ul className="space-y-2">
-										{exp.achievements.map((achievement, i) => {
-											const { icon: Icon, color } = getCategoryIcon(achievement.category);
-											return (
-												<li
-													key={i}
-													className="flex items-start gap-3 text-sm text-gray-400"
-												>
-													<Icon className={`w-4 h-4 mt-0.5 ${color} flex-shrink-0`} />
-													<span className="leading-relaxed break-words">{achievement.text}</span>
-												</li>
-											);
-										})}
-									</ul>
-								</div>
+								<ul className="mt-6 pt-5 border-t border-[var(--border)] space-y-3">
+									{exp.achievements.map((achievement, i) => {
+										const Icon = getCategoryIcon(achievement.category);
+										return (
+											<li
+												key={i}
+												className="flex items-start gap-3 text-sm text-[var(--muted)]"
+											>
+												<Icon className="w-4 h-4 mt-0.5 text-[var(--accent)] flex-shrink-0" aria-hidden="true" />
+												<span className="leading-relaxed break-words">{achievement.text}</span>
+											</li>
+										);
+									})}
+								</ul>
 							</div>
 						</motion.div>
 					))}
@@ -157,35 +154,35 @@ export default function ExperienceCarouselDesktop({ experiences }: ExperienceCar
 			{currentIndex > 0 && (
 				<button
 					onClick={prev}
-					className="absolute left-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/30 hover:bg-purple-500/50 backdrop-blur-sm border border-purple-500/40 transition-all"
-					aria-label="Previous experience"
+					className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[var(--surface)] hover:bg-[var(--bg)] border border-[var(--border)] transition-colors"
+					aria-label="Expérience précédente"
 				>
-					<ChevronLeft className="w-6 h-6 text-white" />
+					<ChevronLeft className="w-5 h-5 text-[var(--text)]" />
 				</button>
 			)}
 
 			{currentIndex < experiences.length - 1 && (
 				<button
 					onClick={next}
-					className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/30 hover:bg-purple-500/50 backdrop-blur-sm border border-purple-500/40 transition-all"
-					aria-label="Next experience"
+					className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[var(--surface)] hover:bg-[var(--bg)] border border-[var(--border)] transition-colors"
+					aria-label="Expérience suivante"
 				>
-					<ChevronRight className="w-6 h-6 text-white" />
+					<ChevronRight className="w-5 h-5 text-[var(--text)]" />
 				</button>
 			)}
 
 			{/* Pagination dots */}
-			<div className="flex gap-2 justify-center mt-6">
+			<div className="flex gap-2 justify-center mt-7">
 				{experiences.map((_, index) => (
 					<button
 						key={index}
 						onClick={() => setCurrentIndex(index)}
-						className={`w-2 h-2 rounded-full transition-all ${
+						className={`h-1.5 rounded-full transition-all ${
 							index === currentIndex
-								? "bg-purple-500 w-8"
-								: "bg-gray-600 hover:bg-gray-500"
+								? "bg-[var(--accent)] w-8"
+								: "bg-[var(--border)] hover:bg-[var(--muted)] w-1.5"
 						}`}
-						aria-label={`Go to experience ${index + 1}`}
+						aria-label={`Aller à l'expérience ${index + 1}`}
 					/>
 				))}
 			</div>

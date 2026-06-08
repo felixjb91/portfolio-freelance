@@ -2,9 +2,21 @@
 import ExperienceSection from "../React/ExperienceSection.tsx";
 ---
 
-<section id="experience" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">Mes expériences professionnelles</h2>
-        <ExperienceSection client:visible />
-    </div>
+<section
+  id="experience"
+  class="py-20 md:py-28 border-t border-[var(--border)] text-[var(--text)] scroll-mt-24"
+>
+  <div class="max-w-5xl mx-auto">
+    <p
+      class="font-mono text-xs sm:text-sm tracking-[0.18em] uppercase text-[var(--muted)]"
+    >
+      <span class="text-[var(--accent)]">02</span> — Parcours
+    </p>
+    <h2
+      class="mt-4 font-serif font-medium text-3xl md:text-4xl text-[var(--text)]"
+    >
+      Là où j'ai construit
+    </h2>
+    <ExperienceSection client:visible />
+  </div>
 </section>

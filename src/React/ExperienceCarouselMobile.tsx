@@ -26,13 +26,13 @@ export default function ExperienceCarouselMobile({ experiences }: ExperienceCaro
 	const getCategoryIcon = (category: string) => {
 		switch (category) {
 			case "tech":
-				return { icon: Code, color: "text-purple-400" };
+				return Code;
 			case "impact":
-				return { icon: TrendingUp, color: "text-blue-400" };
+				return TrendingUp;
 			case "humain":
-				return { icon: Users, color: "text-orange-400" };
+				return Users;
 			default:
-				return { icon: Code, color: "text-gray-400" };
+				return Code;
 		}
 	};
 
@@ -64,7 +64,7 @@ export default function ExperienceCarouselMobile({ experiences }: ExperienceCaro
 	};
 
 	return (
-		<div className="relative w-full py-8">
+		<div className="relative w-full py-6">
 			{/* Scroll container */}
 			<div
 				ref={scrollRef}
@@ -74,73 +74,71 @@ export default function ExperienceCarouselMobile({ experiences }: ExperienceCaro
 				{experiences.map((exp, index) => (
 					<div
 						key={index}
-						className="w-full flex-shrink-0 snap-start px-4"
+						className="w-full flex-shrink-0 snap-start px-1"
 					>
-						<div className="p-4 bg-background/80 backdrop-blur-sm rounded-lg border border-purple-500/20 shadow-lg h-full">
+						<div className="p-5 bg-[var(--surface)] border border-[var(--border)] rounded-xl h-full">
 							{/* Card header */}
-							<h3 className="font-medium text-base text-white break-words whitespace-normal">
-								{exp.position ? `${exp.position} | ${exp.company}` : exp.company}
+							<h3 className="font-serif text-lg text-[var(--text)] break-words whitespace-normal">
+								{exp.position ? `${exp.position} · ${exp.company}` : exp.company}
 							</h3>
 
-							<div className="flex items-center gap-2 text-xs text-gray-300 mt-3">
-								<MapPin className="w-4 h-4 opacity-70 text-[var(--sec)] flex-shrink-0" />
-								<span className="break-words whitespace-normal">{exp.location}</span>
-							</div>
-
-							<div className="flex items-center gap-2 text-xs text-gray-300 mt-1 mb-4">
-								<Calendar className="w-4 h-4 opacity-70 text-[var(--sec)] flex-shrink-0" />
-								<span className="break-words whitespace-normal">{exp.period}</span>
+							<div className="flex flex-col gap-1 mt-3 font-mono text-xs text-[var(--muted)]">
+								<span className="flex items-center gap-1.5">
+									<MapPin className="w-3.5 h-3.5 text-[var(--accent)] flex-shrink-0" />
+									<span className="break-words whitespace-normal">{exp.location}</span>
+								</span>
+								<span className="flex items-center gap-1.5">
+									<Calendar className="w-3.5 h-3.5 text-[var(--accent)] flex-shrink-0" />
+									<span className="break-words whitespace-normal">{exp.period}</span>
+								</span>
 							</div>
 
 							{/* Tech Stack */}
 							{exp.techStack && exp.techStack.length > 0 && (
-								<div className="flex flex-wrap gap-1.5 mb-4">
+								<div className="flex flex-wrap gap-1.5 mt-4">
 									{exp.techStack.map((tech, i) => (
-										<img
+										<span
 											key={i}
-											src={`/svg/${tech}.svg`}
-											alt={tech}
-											className="w-4 h-4 opacity-70 hover:opacity-100 transition-opacity"
-											title={tech}
-										/>
+											className="font-mono text-[0.65rem] uppercase tracking-wide px-1.5 py-0.5 border border-[var(--border)] text-[var(--muted)] rounded"
+										>
+											{tech}
+										</span>
 									))}
 								</div>
 							)}
 
 							{/* Achievements */}
-							<div className="mt-3 p-3 bg-background/40 rounded-lg border border-purple-500/10">
-								<ul className="space-y-2">
-									{exp.achievements.map((achievement, i) => {
-										const { icon: Icon, color } = getCategoryIcon(achievement.category);
-										return (
-											<li
-												key={i}
-												className="flex items-start gap-2 text-xs text-gray-400"
-											>
-												<Icon className={`w-3.5 h-3.5 mt-0.5 ${color} flex-shrink-0`} />
-												<span className="leading-relaxed break-words whitespace-normal">{achievement.text}</span>
-											</li>
-										);
-									})}
-								</ul>
-							</div>
+							<ul className="mt-5 pt-4 border-t border-[var(--border)] space-y-2.5">
+								{exp.achievements.map((achievement, i) => {
+									const Icon = getCategoryIcon(achievement.category);
+									return (
+										<li
+											key={i}
+											className="flex items-start gap-2 text-xs text-[var(--muted)]"
+										>
+											<Icon className="w-3.5 h-3.5 mt-0.5 text-[var(--accent)] flex-shrink-0" aria-hidden="true" />
+											<span className="leading-relaxed break-words whitespace-normal">{achievement.text}</span>
+										</li>
+									);
+								})}
+							</ul>
 						</div>
 					</div>
 				))}
 			</div>
 
 			{/* Pagination dots */}
-			<div className="flex gap-2 justify-center mt-6">
+			<div className="flex gap-2 justify-center mt-7">
 				{experiences.map((_, index) => (
 					<button
 						key={index}
 						onClick={() => scrollToCard(index)}
-						className={`w-2 h-2 rounded-full transition-all ${
+						className={`h-1.5 rounded-full transition-all ${
 							index === currentIndex
-								? "bg-purple-500 w-8"
-								: "bg-gray-600 hover:bg-gray-500"
+								? "bg-[var(--accent)] w-8"
+								: "bg-[var(--border)] hover:bg-[var(--muted)] w-1.5"
 						}`}
-						aria-label={`Go to experience ${index + 1}`}
+						aria-label={`Aller à l'expérience ${index + 1}`}
 					/>
 				))}
 			</div>
