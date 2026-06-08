@@ -11,7 +11,7 @@ const SkillsList = () => {
   const entries = Object.entries(skills);
 
   return (
-    <section aria-labelledby="skills-heading" className="pt-20 md:pt-28 pb-8">
+    <section aria-labelledby="skills-heading" className="pt-12 md:pt-16 pb-8">
       <p className="font-mono text-xs sm:text-sm tracking-[0.18em] uppercase text-[var(--muted)]">
         <span className="text-[var(--accent)]">01</span> — Ce que je fais
       </p>
