@@ -19,10 +19,10 @@ export const Tech = {
 export type TechType = typeof Tech[keyof typeof Tech];
 
 export const skills = {
-	"Conception & Conseil": [
-		"Analyse des besoins et cadrage produit",
-		"Conception d’architectures robustes (DDD)",
-		"Accompagnement stratégique sur les choix techniques",
+	"Tech Lead & Conseil technique": [
+		"Cadrage d’architecture et choix structurants (DDD)",
+		"Accompagnement et montée en compétence des équipes",
+		"Revue de code, standards & exigence technique (TDD, Clean Architecture)",
 	],
 	"Développement Backend": [
 		"Systèmes fiables et évolutifs (TDD, Clean Architecture)",
@@ -45,7 +45,7 @@ export const workExperiencePro = [
 	{
 		company: "Sacem",
 		location: "Paris, France",
-		position: "Ingénieur Logiciel – Lead dev",
+		position: "Tech Lead & Ingénieur logiciel",
 		period: "Oct. 2023 – Aujourd'hui",
 		techStack: [Tech.JAVA, Tech.SPRING_BOOT, Tech.AWS, Tech.DOCKER, Tech.POSTGRESQL, Tech.ANGULAR],
 		achievements: [
